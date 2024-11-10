@@ -1,0 +1,172 @@
+/* App.css */
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #1a1a1a;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+
+.watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.1);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Centered mic button with flex alignment */
+.mic-button {
+  background-color: #2f2f2f;
+  border: 3px solid #25D366;
+  color: #25D366;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px; /* Space between mic button and text */
+}
+
+.mic-button.active {
+  background-color: #3f3f3f;
+  box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.5);
+}
+
+.mic-button.active::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 255, 0, 0.3);
+  width: 200%;
+  height: 200%;
+  animation: ripple 1.5s ease-out infinite;
+  z-index: 0;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.mic-button:hover {
+  background-color: #3f3f3f;
+}
+
+.status-text {
+  font-size: 18px;
+  color: #25D366;
+  margin-top: 10px; /* Reduced for compact alignment */
+  text-align: center;
+}
+
+.mic-icon {
+  fill: #25D366;
+  width: 40px;
+  height: 40px;
+}
+
+.red-dot {
+  width: 35px;
+  height: 35px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.footer-watermark {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.text-input {
+  background-color: #2f2f2f;
+  color: #fff;
+  border: 3px solid #25D366;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 300px;
+  /* margin-top: 20px; */
+  text-align: center;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+/* Glowing effect when the input is focused (active) */
+.text-input:focus {
+  box-shadow: 0px 0px 15px rgba(37, 211, 102, 0.5); /* Green glow similar to mic button */
+  border-color: #25D366;
+  outline: none; /* Remove default outline */
+}
+
+/* New styles for mode toggle button */
+.mode-toggle-button {
+  background-color: transparent;
+  border: 2px solid #25D366;
+  color: #25D366;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 15px; /* Spacing below input component */
+  transition: background-color 0.3s;
+}
+
+.mode-toggle-button:hover {
+  background-color: rgba(37, 211, 102, 0.2); /* Slight green hover effect */
+}
+
+.footer-watermark .default-text {
+  transition: opacity 0.3s ease-out;
+}
+
+.footer-watermark .hover-text {
+  position: absolute;
+  right: 100%;
+  opacity: 0;
+  transition: right 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.footer-watermark:hover .default-text {
+  opacity: 0;
+}
+
+.footer-watermark:hover .hover-text {
+  right: 0;
+  opacity: 1;
+}
