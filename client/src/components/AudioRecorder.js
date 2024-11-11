@@ -19,7 +19,7 @@ const AudioRecorder = () => {
 
   const submitVal = () => {
     if (inputValue.trim()) {
-      fetch('http://localhost:5000/submit-text', {
+      fetch('http://127.0.0.1:5000/submit-text', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ const AudioRecorder = () => {
     const formData = new FormData();
     formData.append('audio', wavBlob, 'recording.wav');
 
-    fetch('http://localhost:5000/upload-audio', {
+    fetch(' http://127.0.0.1:5000/upload-audio', {
       method: 'POST',
       body: formData,
     })
