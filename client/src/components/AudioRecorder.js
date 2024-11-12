@@ -3,6 +3,7 @@ import MicButton from './MicButton';
 import StatusText from './StatusText';
 import Watermark from './Watermark';
 import FooterWatermark from './FooterWatermark';
+import HadoopScriptComponent from './script';
 
 const AudioRecorder = () => {
   const [isRecording, setIsRecording] = useState(false);
@@ -30,8 +31,8 @@ const AudioRecorder = () => {
       })
         .then((response) => response.text())
         .then((result) => {
-          setResponse(result)
-          console.log(result); // Log the response from Flask
+          setResponse(result.split('```')[1])
+          console.log(result.split('```')[1]); // Log the response from Flask
           alert(result.message || "Text submitted successfully!");
         })
         .catch((error) => {
@@ -103,8 +104,8 @@ const AudioRecorder = () => {
     })
       .then((response) => response.text())
       .then((result) => {
-        setResponse(result)
-        console.log(result); // Log the response from Flask
+        setResponse(result.split('```')[1])
+        console.log(result.split('```')[1]); // Log the response from Flask
         alert('Audio file uploaded successfully!');
       })
       .catch((error) => {
@@ -176,7 +177,8 @@ const AudioRecorder = () => {
       <button onClick={handleInputModeToggle} className="mode-toggle-button">
         Switch to {inputMode === 'audio' ? 'Text' : 'Audio'} Input
       </button>
-      <p>{aiRespone}</p>
+      {/* <p>{aiRespone}</p> */}
+      <HadoopScriptComponent script={aiRespone}/>
       <FooterWatermark />
     </div>
   );
