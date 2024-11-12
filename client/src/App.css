@@ -170,3 +170,21 @@ body {
   right: 0;
   opacity: 1;
 }
+/* App.css */
+.ai-response {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.ai-response h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.ai-response p {
+  margin: 0;
+  font-size: 1em;
+  color: #333;
+}

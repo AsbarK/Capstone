@@ -127,7 +127,7 @@ def continual_chat(query,chat_history):
     # Process the user's query through the retrieval chain
     result = rag_chain.invoke({"input": query, "chat_history": chat_history})
     # Display the AI's response
-    print(f"AI: {result}")
+    #print(f"AI: {result}")
     print(f"AI: {result['answer']}")
     # Update the chat history
 

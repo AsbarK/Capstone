@@ -1,0 +1,14 @@
+/* AIResponse.css */
+
+.AIResponse {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    color: #25D366;
+    font-size: 16px;
+    max-width: 80%;
+    word-wrap: break-word;
+    text-align: center;
+  }
+  
