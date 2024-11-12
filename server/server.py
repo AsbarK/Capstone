@@ -98,7 +98,7 @@ def submit_text():
         result = continual_chat(text,chat_history)
         chat_history.append(HumanMessage(content=text))
         chat_history.append(SystemMessage(content=result["answer"]))
-        print(result)
+        # print(result)
         return result['answer'], 200
     else:
         return "No text received", 400
