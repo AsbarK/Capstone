@@ -1,4 +1,3 @@
-
 from flask import Flask, request
 import os
 from flask_cors import CORS,cross_origin
@@ -88,7 +87,7 @@ def upload_audio():
     # print(f"Transcription result: {transcription_result}")
 
     # Return transcription result to the client
-    return "Uploaded and Transcribed Successfully", 200
+    return result['answer'], 200
 
 @app.route('/submit-text', methods=['POST'])
 def submit_text():
@@ -96,7 +95,11 @@ def submit_text():
     text = data.get('text')  # Extract the 'text' from the JSON payload
     if text:
         print(f"Received text: {text}")
-        return "Text received successfully", 200
+        result = continual_chat(text,chat_history)
+        chat_history.append(HumanMessage(content=text))
+        chat_history.append(SystemMessage(content=result["answer"]))
+        print(result)
+        return result['answer'], 200
     else:
         return "No text received", 400
 
@@ -104,5 +107,3 @@ def submit_text():
 if __name__ == '__main__':
     createVectorDB()
     app.run(port=5000, debug=True)
-
-

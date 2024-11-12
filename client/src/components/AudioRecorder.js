@@ -12,6 +12,8 @@ const AudioRecorder = () => {
   const [audioBuffer, setAudioBuffer] = useState([]);
   const [audioProcessor, setAudioProcessor] = useState(null);
   const [inputValue, setInputValue] = useState('');
+  const [aiRespone, setResponse] = useState('');
+  // const [aiRespone, setResponse] = useState('');
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -28,6 +30,7 @@ const AudioRecorder = () => {
       })
         .then((response) => response.text())
         .then((result) => {
+          setResponse(result)
           console.log(result); // Log the response from Flask
           alert(result.message || "Text submitted successfully!");
         })
@@ -45,6 +48,7 @@ const AudioRecorder = () => {
   const handleMicButtonClick = async () => {
     if (!isRecording) {
       // Clear the audio buffer to start a new recording
+      setResponse('')
       setAudioBuffer([]);
 
       // Start a new recording session
@@ -99,6 +103,7 @@ const AudioRecorder = () => {
     })
       .then((response) => response.text())
       .then((result) => {
+        setResponse(result)
         console.log(result); // Log the response from Flask
         alert('Audio file uploaded successfully!');
       })
@@ -171,6 +176,7 @@ const AudioRecorder = () => {
       <button onClick={handleInputModeToggle} className="mode-toggle-button">
         Switch to {inputMode === 'audio' ? 'Text' : 'Audio'} Input
       </button>
+      <p>{aiRespone}</p>
       <FooterWatermark />
     </div>
   );
